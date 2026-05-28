@@ -153,10 +153,10 @@ void send_gamepad_report(void)
 //	report.zr = (int16_t)map( yLeftStickValue_ADC, 0, 4095, INT16_MIN, INT16_MAX );
 //	report.za = (int16_t)map( xLeftStickValue_ADC, 0, 4095, INT16_MIN, INT16_MAX );
 
-	report.x = (int16_t)map( drx, -2047, 2047, INT16_MIN, INT16_MAX );
-	report.y = (int16_t)map( dry, -2047, 2047, INT16_MIN, INT16_MAX );
-	report.zr = (int16_t)map( dlx, -2047, 2047, INT16_MIN, INT16_MAX );
-	report.za = (int16_t)map( dly, -2047, 2047, INT16_MIN, INT16_MAX );
+	report.x = (int16_t)map( drx, -2047, 2047, -32767, 32767);
+	report.y = (int16_t)map( dry, -2047, 2047, -32767, 32767);
+	report.zr = (int16_t)map( dlx, -2047, 2047, -32767, 32767);
+	report.za = (int16_t)map( dly, -2047, 2047, -32767, 32767);
 
 	adcValueReady = 0;
 

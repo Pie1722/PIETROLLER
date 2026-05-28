@@ -39,9 +39,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   00015d3f  00000000  00000000  0003dc5c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00091e4e  00000000  00000000  0005399b  2**0
+ 18 .debug_str    00091e4d  00000000  00000000  0005399b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000e57e9  2**0
+ 19 .comment      00000043  00000000  00000000  000e57e8  2**0
                   CONTENTS, READONLY
  20 .debug_frame  0000489c  00000000  00000000  000e582c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -572,7 +572,7 @@ void send_gamepad_report(void)
 //	report.zr = (int16_t)map( yLeftStickValue_ADC, 0, 4095, INT16_MIN, INT16_MAX );
 //	report.za = (int16_t)map( xLeftStickValue_ADC, 0, 4095, INT16_MIN, INT16_MAX );
 
-	report.x = (int16_t)map( drx, -2047, 2047, INT16_MIN, INT16_MAX );
+	report.x = (int16_t)map( drx, -2047, 2047, -32767, 32767);
  800c508:	f9b7 0016 	ldrsh.w	r0, [r7, #22]
  800c50c:	f647 73ff 	movw	r3, #32767	@ 0x7fff
  800c510:	9300      	str	r3, [sp, #0]
@@ -583,7 +583,7 @@ void send_gamepad_report(void)
  800c51e:	4603      	mov	r3, r0
  800c520:	b21b      	sxth	r3, r3
  800c522:	f8a7 3007 	strh.w	r3, [r7, #7]
-	report.y = (int16_t)map( dry, -2047, 2047, INT16_MIN, INT16_MAX );
+	report.y = (int16_t)map( dry, -2047, 2047, -32767, 32767);
  800c526:	f9b7 0014 	ldrsh.w	r0, [r7, #20]
  800c52a:	f647 73ff 	movw	r3, #32767	@ 0x7fff
  800c52e:	9300      	str	r3, [sp, #0]
@@ -594,7 +594,7 @@ void send_gamepad_report(void)
  800c53c:	4603      	mov	r3, r0
  800c53e:	b21b      	sxth	r3, r3
  800c540:	f8a7 3009 	strh.w	r3, [r7, #9]
-	report.zr = (int16_t)map( dlx, -2047, 2047, INT16_MIN, INT16_MAX );
+	report.zr = (int16_t)map( dlx, -2047, 2047, -32767, 32767);
  800c544:	f9b7 0012 	ldrsh.w	r0, [r7, #18]
  800c548:	f647 73ff 	movw	r3, #32767	@ 0x7fff
  800c54c:	9300      	str	r3, [sp, #0]
@@ -605,7 +605,7 @@ void send_gamepad_report(void)
  800c55a:	4603      	mov	r3, r0
  800c55c:	b21b      	sxth	r3, r3
  800c55e:	f8a7 300d 	strh.w	r3, [r7, #13]
-	report.za = (int16_t)map( dly, -2047, 2047, INT16_MIN, INT16_MAX );
+	report.za = (int16_t)map( dly, -2047, 2047, -32767, 32767);
  800c562:	f9b7 0010 	ldrsh.w	r0, [r7, #16]
  800c566:	f647 73ff 	movw	r3, #32767	@ 0x7fff
  800c56a:	9300      	str	r3, [sp, #0]
@@ -644,7 +644,7 @@ void send_gamepad_report(void)
  800c5b0:	20000260 	.word	0x20000260
  800c5b4:	20000258 	.word	0x20000258
  800c5b8:	20000262 	.word	0x20000262
- 800c5bc:	ffff8000 	.word	0xffff8000
+ 800c5bc:	ffff8001 	.word	0xffff8001
  800c5c0:	fffff801 	.word	0xfffff801
  800c5c4:	20000240 	.word	0x20000240
  800c5c8:	20000270 	.word	0x20000270

@@ -3441,31 +3441,31 @@ void readAdcValues(){
 //		xLeftStickValue = (int16_t)map( xLeftStickValue_ADC, 0, 4095, INT16_MIN, INT16_MAX );
 //		yLeftStickValue = (int16_t)map( yLeftStickValue_ADC, 4095, 0, INT16_MIN, INT16_MAX );
 
-		xRightStickValue = (int16_t)map( drx, -2047, 2045, INT16_MIN, INT16_MAX );
+		xRightStickValue = (int16_t)map( drx, -2047, 2047, -32767, 32767);
  800344e:	f9b7 0006 	ldrsh.w	r0, [r7, #6]
  8003452:	f647 73ff 	movw	r3, #32767	@ 0x7fff
  8003456:	9300      	str	r3, [sp, #0]
  8003458:	4b2a      	ldr	r3, [pc, #168]	@ (8003504 <readAdcValues+0x214>)
- 800345a:	f240 72fd 	movw	r2, #2045	@ 0x7fd
+ 800345a:	f240 72ff 	movw	r2, #2047	@ 0x7ff
  800345e:	492a      	ldr	r1, [pc, #168]	@ (8003508 <readAdcValues+0x218>)
  8003460:	f000 f890 	bl	8003584 <map>
  8003464:	4603      	mov	r3, r0
  8003466:	b21a      	sxth	r2, r3
  8003468:	4b28      	ldr	r3, [pc, #160]	@ (800350c <readAdcValues+0x21c>)
  800346a:	801a      	strh	r2, [r3, #0]
-		yRightStickValue = (int16_t)map( dry, 2045, -2047, INT16_MIN, INT16_MAX );							// 4095 is the max value that my adc presents with potentiometers
+		yRightStickValue = (int16_t)map( dry, 2047, -2047, -32767, 32767);							// 4095 is the max value that my adc presents with potentiometers
  800346c:	f9b7 0004 	ldrsh.w	r0, [r7, #4]
  8003470:	f647 73ff 	movw	r3, #32767	@ 0x7fff
  8003474:	9300      	str	r3, [sp, #0]
  8003476:	4b23      	ldr	r3, [pc, #140]	@ (8003504 <readAdcValues+0x214>)
  8003478:	4a23      	ldr	r2, [pc, #140]	@ (8003508 <readAdcValues+0x218>)
- 800347a:	f240 71fd 	movw	r1, #2045	@ 0x7fd
+ 800347a:	f240 71ff 	movw	r1, #2047	@ 0x7ff
  800347e:	f000 f881 	bl	8003584 <map>
  8003482:	4603      	mov	r3, r0
  8003484:	b21a      	sxth	r2, r3
  8003486:	4b22      	ldr	r3, [pc, #136]	@ (8003510 <readAdcValues+0x220>)
  8003488:	801a      	strh	r2, [r3, #0]
-		xLeftStickValue = (int16_t)map( dlx, -2047, 2047, INT16_MIN, INT16_MAX );
+		xLeftStickValue = (int16_t)map( dlx, -2047, 2047, -32767, 32767);
  800348a:	f9b7 0002 	ldrsh.w	r0, [r7, #2]
  800348e:	f647 73ff 	movw	r3, #32767	@ 0x7fff
  8003492:	9300      	str	r3, [sp, #0]
@@ -3477,7 +3477,7 @@ void readAdcValues(){
  80034a2:	b21a      	sxth	r2, r3
  80034a4:	4b1b      	ldr	r3, [pc, #108]	@ (8003514 <readAdcValues+0x224>)
  80034a6:	801a      	strh	r2, [r3, #0]
-		yLeftStickValue = (int16_t)map( dly, 2047, -2047, INT16_MIN, INT16_MAX );
+		yLeftStickValue = (int16_t)map( dly, 2047, -2047, -32767, 32767);
  80034a8:	f9b7 0000 	ldrsh.w	r0, [r7]
  80034ac:	f647 73ff 	movw	r3, #32767	@ 0x7fff
  80034b0:	9300      	str	r3, [sp, #0]
@@ -3513,7 +3513,7 @@ void readAdcValues(){
  80034f8:	40010800 	.word	0x40010800
  80034fc:	2000097a 	.word	0x2000097a
  8003500:	2000097c 	.word	0x2000097c
- 8003504:	ffff8000 	.word	0xffff8000
+ 8003504:	ffff8001 	.word	0xffff8001
  8003508:	fffff801 	.word	0xfffff801
  800350c:	20000982 	.word	0x20000982
  8003510:	20000984 	.word	0x20000984
