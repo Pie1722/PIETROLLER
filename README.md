@@ -2,6 +2,7 @@
 
 <img width="2465" height="1848" alt="instructable banner" src="https://github.com/user-attachments/assets/625ddeb1-d5d8-42bf-8db0-488483a8961c" />
 
+---
 
 This is a game controller made using STM32 Black Pill (STM32F401CCU6). I have used STM32CubeIde for building this project and used the auto code generator to create the base code with the required libraries.
 
