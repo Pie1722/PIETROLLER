@@ -61,7 +61,7 @@
   * @brief Private defines.
   * @{
   */
-// Amras, Chote Gandu, BluePill
+
 #define USBD_VID    1155 		// logitech 0x46d
 #define USBD_LANGID_STRING     1033
 #define USBD_MANUFACTURER_STRING     "Pie1722"
